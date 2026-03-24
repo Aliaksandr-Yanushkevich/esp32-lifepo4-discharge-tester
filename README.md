@@ -2,84 +2,63 @@ ESP32-C3 LiFePO4 Discharge Tester
 
 Minimal battery discharge tester for single LiFePO4 cells based on ESP32-C3 Mini.
 
-Features
+🚀 Features
 ESP32-C3 Mini control
 Voltage measurement via ADC
-MOSFET controlled load
+MOSFET-controlled load
 Automatic cutoff by voltage
-Hysteresis control
-Telegram bot with buttons
+Hysteresis (no oscillation)
+Telegram bot control (buttons)
 No display required
 Low-cost components
-Stable calibrated readings
+Calibrated voltage readings
 No message spam
-Hardware
-
-Main components:
-
-ESP32-C3 Mini
-IRLB8743 MOSFET
-Power resistors (load)
-Voltage divider
-Optional capacitor (0.1 µF)
-Voltage divider
-
-R1 = 100k
-R2 = 100k
-
-Divider ratio: 2:1
-
-Wiring
+🔧 Hardware
+Components
+Component	Description
+ESP32-C3 Mini	Main controller
+IRLB8743	N-channel MOSFET
+Resistors	Load
+100k / 100k	Voltage divider
+0.1 µF	ADC filter capacitor
+⚡ Electrical Connections
 Load path
-
-BAT+ → Load → MOSFET Drain
-MOSFET Source → GND
+BAT+ → Load → MOSFET (Drain)
+MOSFET (Source) → GND
 BAT- → GND
-
 Voltage measurement
-
-BAT+ → R1 → ADC → R2 → GND
-
-ADC pin → GPIO0
-
-Add capacitor:
-
-ADC → 0.1µF → GND
-
+BAT+ ---- R1 ----+---- R2 ---- GND
+                 |
+               GPIO0 (ADC)
+                 |
+               0.1µF
+                 |
+                GND
 MOSFET control
-
-GPIO5 → 100Ω → Gate
-Gate → 100k → GND
-Source → GND
-Drain → Load
-
-Pinout
-
-GPIO0 — ADC input
-GPIO5 — MOSFET gate
-
-Firmware Behavior
-Measures battery voltage continuously
-Applies calibration
-Controls MOSFET based on cutoff
-Uses hysteresis to avoid oscillation
-Sends Telegram messages only on events
-
-No periodic spam messages.
-
-Telegram Interface
-
-Buttons:
-
-Start
-Stop
-Status
-Diag
-Cutoff
-Help
-
-Cutoff values:
-
+GPIO5 ---- 100Ω ---- Gate
+Gate  ---- 100k ---- GND
+Source ---- GND
+Drain  ---- Load
+📌 Pinout
+Pin	Function
+GPIO0	ADC (voltage)
+GPIO5	MOSFET gate
+⚙️ Firmware Behavior
+Continuous voltage measurement
+Calibration applied to readings
+MOSFET controlled by voltage threshold
+Hysteresis prevents oscillation
+Telegram used as UI
+Messages only on events (no spam)
+📡 Telegram Interface
+Main buttons
+▶ Start
+⏹ Stop
+📊 Status
+🧪 Diag
+⚙ Cutoff
+❓ Help
+Cutoff selection
 2.80 V
 2.90 V
 3.00 V
@@ -87,8 +66,7 @@ Cutoff values:
 3.10 V
 3.20 V
 3.30 V
-
-Calibration
+🎯 Calibration
 
 Formula:
 
@@ -99,63 +77,61 @@ Current calibration:
 A = 0.8938
 B = 0.0000
 
-Calibration is based on comparison with a multimeter.
+Calibration is based on multimeter comparison.
 
-Recommended Cutoff
-
-For LiFePO4:
-
-3.00 V — recommended
-2.80 V — extended capacity (not recommended for long-term use)
-
-2.0 V is an absolute minimum, not a working cutoff.
-
-Serial Output
+🔋 Recommended Cutoff
+Voltage	Usage
+3.00 V	✅ Recommended
+2.80 V	⚠ Maximum capacity
+2.00 V	❌ Absolute minimum only
+🧪 Serial Diagnostics
 
 Baud rate: 115200
 
-Diagnostics include:
+Output includes:
 
-ADC raw value
+ADC raw
 ADC voltage
 Raw battery voltage
 Calibrated voltage
 Cutoff
 MOSFET state
 Calibration values
-Project Philosophy
+🧠 Design Philosophy
 Keep hardware simple
 Avoid unnecessary modules
 Use software instead of hardware UI
 Focus on reliability
-Build step by step
-Limitations
+Build iteratively
+⚠️ Limitations
 No current measurement
 No Ah calculation
 No temperature monitoring
-No data logging
-Single cell only
-Future Improvements
+No logging
+Single-cell only
+🚧 Future Improvements
 Current measurement (shunt)
 Ah counter
 Auto calibration
 Temperature monitoring
 Logging
-Internal resistance measurement
-Safety
+Internal resistance estimation
+⚠️ Safety
 Use proper wire thickness
 Ensure resistor cooling
 Add fuse if possible
 Avoid deep discharge
-Always use common ground
+Use common ground
 
-Do not rely on this as the only battery protection system.
+Do not rely on this as the only protection system.
 
-Status
+📌 Status
 
-Working prototype:
+Current state:
 
+Working prototype
 Stable measurements
 Telegram control
-Calibrated voltage
+Calibrated readings
 Safe cutoff logic
+📄 License
