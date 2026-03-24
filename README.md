@@ -134,4 +134,3 @@ Stable measurements
 Telegram control
 Calibrated readings
 Safe cutoff logic
-📄 License
