@@ -6,7 +6,11 @@ A prototype discharge tester for a single LiFePO4 cell, using an ESP32-C3 Mini, 
 
 The firmware is in [`lifepo4_tester.ino`](lifepo4_tester.ino). It measures cell voltage and switches the load at a selectable cutoff. It does **not** measure current or calculate capacity (Ah/Wh).
 
-Photos: [shared iCloud album](https://www.icloud.com/sharedalbum/#D1gv3kj9t14uM_-qoxNOJfSF_bACAEQARogxGbpijmXgZkVoKax6umBtObMlxxSzGx67AQJz0zXkXI).
+## Why I built this
+
+For another project, I needed to select cells with the lowest internal resistance and the highest capacity. The equipment I had available offered limited discharge power, which made discharging the cells too slow.
+
+To discharge them more quickly and safely, I built this prototype from components I already had on the shelf, using external ceramic resistors as the load. It was a practical solution to an immediate problem, rather than an attempt to build the best discharge tester. The goal was to help with the discharge stage of cell selection; this prototype does not itself measure internal resistance or capacity.
 
 ## Hardware and wiring
 
@@ -148,3 +152,7 @@ Use an independent protection system; this sketch alone does not provide reliabl
 - Current sensing and Ah/Wh integration.
 - Temperature monitoring and fault shutdown.
 - Calibration controls and measurement logging.
+
+## Materials
+
+Photos: [shared iCloud album](https://www.icloud.com/sharedalbum/#D1gv3kj9t14uM_-qoxNOJfSF_bACAEQARogxGbpijmXgZkVoKax6umBtObMlxxSzGx67AQJz0zXkXI).

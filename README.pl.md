@@ -6,7 +6,11 @@ Prototyp testera rozładowania pojedynczego ogniwa LiFePO4, zbudowany na ESP32-C
 
 Oprogramowanie znajduje się w pliku [`lifepo4_tester.ino`](lifepo4_tester.ino). Mierzy napięcie ogniwa i przełącza obciążenie według wybranego progu odcięcia. **Nie mierzy prądu ani nie oblicza pojemności lub energii (Ah/Wh).**
 
-Zdjęcia: [udostępniony album iCloud](https://www.icloud.com/sharedalbum/#D1gv3kj9t14uM_-qoxNOJfSF_bACAEQARogxGbpijmXgZkVoKax6umBtObMlxxSzGx67AQJz0zXkXI).
+## Dlaczego powstał ten projekt
+
+Do innego projektu potrzebowałem wybrać ogniwa o jak najmniejszej rezystancji wewnętrznej i jak największej pojemności. Dostępny sprzęt miał ograniczoną moc rozładowania, przez co rozładowywanie ogniw trwało zbyt długo.
+
+Aby rozładowywać je szybciej i bezpieczniej, zbudowałem ten prototyp z elementów, które miałem już na półce, wykorzystując zewnętrzne rezystory ceramiczne jako obciążenie. Było to doraźne rozwiązanie konkretnego problemu, a nie próba stworzenia najlepszego testera rozładowania. Układ miał pomóc na etapie rozładowywania ogniw podczas ich selekcji; sam prototyp nie mierzy rezystancji wewnętrznej ani pojemności.
 
 ## Elementy i połączenia
 
@@ -150,3 +154,7 @@ Używaj niezależnego układu zabezpieczającego; sam szkic nie zapewnia niezawo
 - Pomiar prądu oraz obliczanie Ah/Wh przez całkowanie.
 - Monitorowanie temperatury i wyłączenie w przypadku awarii.
 - Sterowanie kalibracją i zapis pomiarów.
+
+## Materiały
+
+Zdjęcia: [udostępniony album iCloud](https://www.icloud.com/sharedalbum/#D1gv3kj9t14uM_-qoxNOJfSF_bACAEQARogxGbpijmXgZkVoKax6umBtObMlxxSzGx67AQJz0zXkXI).
